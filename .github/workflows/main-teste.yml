@@ -37,9 +37,11 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: Link check (warnings, changed files)
-        run: |
-          ./minerd.h \
+      - name: Link check (updat Ubuntu dependece)
+        run: apt-get update -qq && \
+                apt-get install -qqy automake libcurl4-openssl-dev git make gcc
+
+          
             
             
             
