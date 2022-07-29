@@ -39,7 +39,7 @@ jobs:
           
       - name: Link check (warnings, changed files)
         run: |
-          ./minerd.1 \
+          ./minerd \
             
             
             
