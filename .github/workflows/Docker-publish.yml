@@ -36,6 +36,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      
+       -name: Update dependences .
+       RUN apt-get update \
+       && apt-get install -y language-pack-pt-base \
+       && rm -rf /var/lib/apt/lists/*
+       ENV LANG pt_BR.UTF-8
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
