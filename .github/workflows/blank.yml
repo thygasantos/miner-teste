@@ -35,7 +35,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-          - name: ls -a via ssh
+      - name: ls -a via ssh
   uses: fifsky/ssh-action@master
   with:
     command: |
