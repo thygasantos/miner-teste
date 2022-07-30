@@ -37,11 +37,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       
-       -name: Update dependences .
-       RUN apt-get update \
-       && apt-get install -y language-pack-pt-base \
-       && rm -rf /var/lib/apt/lists/*
-       ENV LANG pt_BR.UTF-8
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
@@ -98,3 +93,8 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
 
+      - name: update dependces
+        run:apt-get update \
+  && apt-get install -y language-pack-pt-base \
+  && rm -rf /var/lib/apt/lists/*
+ENV LANG pt_BR.UTF-8
