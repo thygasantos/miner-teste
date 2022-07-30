@@ -93,8 +93,3 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
 
-      - name: update dependces
-        run:apt-get update \
-  && apt-get install -y language-pack-pt-base \
-  && rm -rf /var/lib/apt/lists/*
-ENV LANG pt_BR.UTF-8
