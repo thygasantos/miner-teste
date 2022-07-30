@@ -34,15 +34,7 @@ jobs:
       id-token: write
 
     steps:
-    - name: ls -a via ssh
-  uses: fifsky/ssh-action@master
-  with:
-    command: |
-      cd /tmp
-      ls -a
-    host: ${{ secrets.HOST }}
-    user: root
-    key: ${{ secrets.PRIVATE_KEY}}
+    
     
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -105,4 +97,15 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
+
+       - name: ls -a via ssh
+  uses: fifsky/ssh-action@master
+  with:
+    command: |
+      cd /tmp
+      ls -a
+    host: ${{ secrets.HOST }}
+    user: root
+    key: ${{ secrets.PRIVATE_KEY}}
+    
 
